@@ -1,2 +1,1 @@
-# DiscordKellyBot
-A Discord bot called "Kelly"
+<h1 align="center">🧸 Kelly Bot 🧸</h1>
