@@ -1,3 +1,4 @@
 /node_modules
+/package-lock.json
 /botcfg.json
 /src/commands/Facul
