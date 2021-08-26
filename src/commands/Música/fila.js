@@ -4,7 +4,7 @@ require('./tocar');
 
 module.exports = {
 	name: 'fila',
-	aliases: ['queue'],
+	aliases: ['queue', 'q'],
 	category: 'Música',
 	description: 'Próximas músicas que tocarão',
 	cooldown: 5,

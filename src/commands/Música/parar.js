@@ -27,8 +27,9 @@ module.exports = {
 
 		if (filaServer.loop) filaServer.loop = !filaServer.loop;
 
-		filaServer.songs.lengh = 0;
+		filaServer.songs = [];
+		filaServer.connection.dispatcher.end();
 
-		return msg.channel.send('**🔊 Músicas** paradas!');
+		msg.channel.send('**🔊 Músicas** paradas!');
 	},
 };
