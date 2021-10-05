@@ -16,14 +16,14 @@ module.exports = {
 		if (!filaServer)
 			return msg
 				.reply('não há músicas tocando!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		const song = filaServer.songs[0];
 
 		if (!song)
 			return msg
 				.reply('não há músicas na fila!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		filaServer.connection.dispatcher.end();
 
