@@ -13,7 +13,7 @@ module.exports = {
 		if (!msg.member.hasPermission('MANAGE_ROLES'))
 			return msg
 				.reply('❌ você não tem permissão para usar o comando!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		const selivon = await msg.guild.members.fetch({
 			user: '768522271160926228',

@@ -14,11 +14,11 @@ module.exports = {
 		if (parseInt(args[0]) <= 0)
 			return msg
 				.reply(`não é possivel rodar um dado de ${args[0]} lados`)
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		if (!Number.isInteger(parseInt(args[0])))
 			return msg
 				.reply(`${args[0]} não é um número válido!`)
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		let argsDado = args.join(' ').split('+').slice(1);
 		let index;
@@ -40,14 +40,14 @@ module.exports = {
 		if (argsDado.length > 6)
 			return msg
 				.reply(`são muitas operações simultâneas!`)
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		if (argsDado.length > 0) {
 			argsDado.forEach((element) => {
 				if (!Number.isInteger(parseInt(element)) && !element.startsWith('d'))
 					return msg
 						.reply(`${element} não é um argumento válido!`)
-						.then((m) => m.delete({ timeout: 3000 }));
+						.then((m) => m.delete({ timeout: 5000 }));
 				if (element.startsWith('d')) {
 					try {
 						let outrosDados = Math.floor(
@@ -59,7 +59,7 @@ module.exports = {
 					} catch (e) {
 						msg
 							.reply(`${element.slice(1)} não é um argumento válido!aaaaaaa`)
-							.then((m) => m.delete({ timeout: 3000 }));
+							.then((m) => m.delete({ timeout: 5000 }));
 					}
 				} else {
 					intDado.push(parseInt(element));
@@ -110,7 +110,7 @@ module.exports = {
 			if (argsDado.filter((x) => x.startsWith('d')).length > 3)
 				return msg
 					.reply(`são muitas operações simultâneas!`)
-					.then((m) => m.delete({ timeout: 3000 }));
+					.then((m) => m.delete({ timeout: 5000 }));
 		} else {
 			embedDado.setDescription(`Dado de ${parseInt(args[0])} lados`);
 		}

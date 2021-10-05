@@ -106,7 +106,7 @@ module.exports = {
 					climas[atual.skytext.split(' ').join('').split('-').join('')]();
 				} catch (err) {
 					msg.reply(
-						'deu erro pq o cara que programou isso é burro ```' +
+						'deu erro pq o cara que programou isso é burro. Dê o comando `erro` junto com a mensagem para me ajudar! ```' +
 							atual.skytext +
 							'```'
 					);

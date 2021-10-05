@@ -18,28 +18,28 @@ module.exports = {
 		if (!canalDenuncia)
 			return msg
 				.reply('não há um canal de `denuncias`!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		if (!args[0] || mencao.user.id === msg.member.user.id)
 			return msg
 				.reply('usuário inválido!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		if (mencao.user.bot)
 			return msg
 				.reply('você não pode denunciar essa pessoa!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		if (!mencao)
 			return msg
 				.reply('não foi possivel encontrar essa pessoa')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		if (!args[1])
 			return msg
 				.reply('motivo inválido!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		let apelidoM = mencao.nickname || mencao.user.username;
 		let apelidoD = msg.member.nickname || msg.member.username;
-		var embedDenuncia = new Discord.MessageEmbed()
+		let embedDenuncia = new Discord.MessageEmbed()
 			.setColor('RED')
 			.setThumbnail(mencao.user.displayAvatarURL())
 			.setTitle(' • Usuário Reportado')
@@ -59,6 +59,6 @@ module.exports = {
 		canalDenuncia.send(embedDenuncia);
 		msg.channel
 			.send('Denúncia feita com sucesso!')
-			.then((m) => m.delete({ timeout: 3000 }));
+			.then((m) => m.delete({ timeout: 5000 }));
 	},
 };

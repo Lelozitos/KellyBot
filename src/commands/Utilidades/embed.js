@@ -13,7 +13,7 @@ module.exports = {
 		const embedPers = new Discord.MessageEmbed()
 			.setTitle('🐦 Twitter')
 			.setDescription(
-				'**Como usar o comando Twitter:**\n`>tw @mencao frase`\nCaso nao haja a @mencao, a frase fica como sua autoria'
+				'**Como usar o comando Twitter:**\n`>tw @mencao frase`\nCaso não haja a @mencao, a frase fica como sua autoria'
 			)
 			.setColor('0x00d2ff')
 			.setThumbnail(

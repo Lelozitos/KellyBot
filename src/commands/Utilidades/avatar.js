@@ -6,7 +6,7 @@ module.exports = {
 	aliases: ['foto', 'icon', 'icone'],
 	category: 'Utilidades',
 	description: 'Retorna o avatar de alguém',
-	cooldown: 5,
+	cooldown: 2,
 	usage: '[@mencao]',
 
 	run: async (bot, msg, args) => {

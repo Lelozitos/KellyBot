@@ -14,7 +14,7 @@ module.exports = {
 		if (!msg.guild.available)
 			return msg
 				.reply('comando indisponível nesse servidor!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		let membros = msg.guild.members.fetch();
 

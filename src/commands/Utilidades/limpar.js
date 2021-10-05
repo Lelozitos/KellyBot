@@ -28,7 +28,7 @@ module.exports = {
 			//         msg.delete();
 			//         i++;
 			//     }
-			//     msg.channel.send(`Foram limpas ${i} mensagens de ${msg.mentions.users.first().tag}!`).then(m => m.delete({timeout:3000}));
+			//     msg.channel.send(`Foram limpas ${i} mensagens de ${msg.mentions.users.first().tag}!`).then(m => m.delete({timeout:5000}));
 			// });
 		} else if (Number.isInteger(parseInt(args[0]))) {
 			if (parseInt(args[0]) < 1)
@@ -49,7 +49,7 @@ module.exports = {
 					.then((m) => m.delete({ timeout: 5000 }));
 			}
 		} else {
-			msg.reply('variável inválida!').then((m) => m.delete({ timeout: 3000 }));
+			msg.reply('variável inválida!').then((m) => m.delete({ timeout: 5000 }));
 		}
 	},
 };

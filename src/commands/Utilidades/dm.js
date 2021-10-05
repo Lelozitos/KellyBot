@@ -12,7 +12,7 @@ module.exports = {
 		if (msg.author.id != '211931473564008448')
 			return msg
 				.reply('você não tem permissão para usar esse comando!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		let mencao = msg.mentions.users.first();
 
 		let mensagemfalar = args.join(' ');
@@ -22,7 +22,7 @@ module.exports = {
 		} catch (err) {
 			msg
 				.reply('o usuário não aceita mensagens na dm!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		}
 	},
 };

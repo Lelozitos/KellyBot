@@ -15,7 +15,7 @@ module.exports = {
 		// if (!mencao)
 		// 	return msg
 		// 		.reply('você precisa mencionar alguém!')
-		// 		.then((m) => m.delete({ timeout: 3000 }));
+		// 		.then((m) => m.delete({ timeout: 5000 }));
 		//
 		// const cargoMutado = msg.guild.roles.cache.find((c) => c.name === 'Mutado');
 		// if (!cargoMutado) msg.reply('no');

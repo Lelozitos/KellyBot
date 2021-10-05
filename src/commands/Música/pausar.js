@@ -16,7 +16,7 @@ module.exports = {
 	],
 	category: 'Música',
 	description: 'Pausa a música que está tocando',
-	cooldown: 5,
+	cooldown: 2,
 	usage: '[]',
 
 	run: async (bot, msg, args) => {

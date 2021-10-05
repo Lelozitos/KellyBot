@@ -11,7 +11,7 @@ module.exports = {
 	run: async (bot, msg, args) => {
 		if (!args[0]) return msg.channel.send('Explique o erro com a Kelly');
 
-		var embedErroFeito = new Discord.MessageEmbed()
+		let embedErroFeito = new Discord.MessageEmbed()
 			.setAuthor(msg.author.tag, msg.author.avatarURL())
 			.setTitle(msg.guild.name)
 			.setDescription(args.join(' '))

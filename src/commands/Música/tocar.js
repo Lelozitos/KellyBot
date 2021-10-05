@@ -139,7 +139,6 @@ const videoPlayer = async (guild, song) => {
 	const filaSongs = fila.get(guild.id);
 
 	if (!song) {
-		filaSongs.voiceChannel.leave();
 		fila.delete(guild.id);
 		return;
 	}

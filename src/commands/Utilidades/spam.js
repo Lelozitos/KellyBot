@@ -10,17 +10,17 @@ module.exports = {
 
 	run: async (bot, msg, args) => {
 		if (msg.author.id != '211931473564008448')
-			return msg.reply('a').then((m) => m.delete({ timeout: 3000 }));
+			return msg.reply('Nananinanão').then((m) => m.delete({ timeout: 5000 }));
 		let mencao = msg.mentions.users.first();
 		let tempo = parseInt(args[1]);
 		if (tempo >= 20)
 			return msg
 				.reply('o número máximo de mensagens é de 20')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		if (isNaN(tempo))
 			return msg
 				.reply('quantidade inválida!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		let listaMensagens = [
 			'Bó LoL',

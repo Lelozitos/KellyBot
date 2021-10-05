@@ -5,14 +5,14 @@ module.exports = {
 	aliases: ['bola8', 'serase'],
 	category: 'Jogos',
 	description: 'Rola respostas definidas para uma pergunta',
-	cooldown: 2,
+	cooldown: 3,
 	usage: '<pergunta>',
 
 	run: async (bot, msg, args) => {
 		if (!args[0])
 			return msg
 				.reply('sua pergunta está incompleta!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		let respostas8 = [
 			'Sim.',
 			'Não.',

@@ -6,7 +6,7 @@ module.exports = {
 	aliases: ['amor', 'love'],
 	category: 'Jogos',
 	description: 'Dá uma porcentagem aleatória ai... pensa muita coisa não',
-	cooldown: 2,
+	cooldown: 3,
 	usage: '<@mencao | @mencao>',
 
 	run: async (bot, msg, args) => {
@@ -19,7 +19,7 @@ module.exports = {
 		if (mencoes.length < 1)
 			return msg
 				.reply('mencione 2 pessoas para funcionar!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		if (mencoes.length === 1) {
 			mencao1 = msg.member;
@@ -34,12 +34,12 @@ module.exports = {
 		if (mencoes.length > 2)
 			return msg
 				.reply('muitas pessoas para calcular!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		if (mencao1.user.id === mencao2.user.id)
 			return msg
 				.reply('você não pode shipar a mesma pessoa!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		// let sampleNumber =
 		// 	(mencao1.user.id / 1000000000) * (mencao2.user.id / 1000000000);

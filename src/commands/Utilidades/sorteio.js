@@ -19,7 +19,7 @@ module.exports = {
 		)
 			return msg
 				.reply('tempo não determinado!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 		const Tempo = {
 			s() {},
 			m() {},

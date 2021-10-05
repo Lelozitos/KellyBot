@@ -15,7 +15,7 @@ module.exports = {
 		if (!dados)
 			return msg
 				.reply('escreva a mensagem para converter para QRcode!')
-				.then((m) => m.delete({ timeout: 3000 }));
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		let qr = QRCode(0, 'L');
 		qr.addData(dados);

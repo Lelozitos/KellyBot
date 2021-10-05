@@ -4,7 +4,7 @@ require('./tocar');
 
 module.exports = {
 	name: 'pular',
-	aliases: ['skip'],
+	aliases: ['skip', 's', 'fs'],
 	category: 'Música',
 	description: 'Pula a música atual',
 	cooldown: 5,

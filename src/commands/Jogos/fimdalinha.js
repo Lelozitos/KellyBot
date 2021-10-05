@@ -5,7 +5,7 @@ module.exports = {
 	aliases: ['fdl', '10to1', '100to1'],
 	category: 'Jogos',
 	description: 'A pessoa que chegar a 1 perde',
-	cooldown: 2,
+	cooldown: 3,
 	usage: '[]',
 
 	run: async (bot, msg, args) => {
