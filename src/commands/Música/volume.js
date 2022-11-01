@@ -18,10 +18,12 @@ module.exports = {
 				.then((m) => m.delete({ timeout: 5000 }));
 
 		if (!args[0] || isNaN(args[0]))
-			return msg.channel.send(`🔊 Volume é de ${filaServer.volume}`);
+			return msg.channel.send(`🔊 Volume é de ${filaServer.volume} (0 - 3)`);
 
 		if (args[0] > 3)
-			return msg.reply('muito alto!').then((m) => m.delete({ timeout: 5000 }));
+			return msg
+				.reply('muito alto! (Máximo de 3)')
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		if (args[0] < 0)
 			return msg

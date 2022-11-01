@@ -9,7 +9,10 @@ module.exports = {
 	usage: '<erro>',
 
 	run: async (bot, msg, args) => {
-		if (!args[0]) return msg.channel.send('Explique o erro com a Kelly');
+		if (!args[0])
+			return msg.channel
+				.send('Explique o erro com a Kelly')
+				.then((m) => m.delete({ timeout: 5000 }));
 
 		let embedErroFeito = new Discord.MessageEmbed()
 			.setAuthor(msg.author.tag, msg.author.avatarURL())

@@ -195,6 +195,7 @@ function draw(ctx, forma, pos, side) {
 	// 	(hor * side) / 3 - side / 12
 	// );
 
+	ctx.strokeStyle = '#00ECC1';
 	switch (forma) {
 		case 'X':
 			ctx.beginPath();
@@ -216,8 +217,11 @@ function draw(ctx, forma, pos, side) {
 			);
 			ctx.stroke();
 			break;
+
 		case 'O':
 			ctx.beginPath();
+			ctx.fillStyle = '#00ECC1';
+
 			ctx.arc(
 				(ver * side) / 3 + side / 6,
 				((hor + 1) * side) / 3 - side / 6,

@@ -5,12 +5,14 @@ module.exports = (bot) => {
 		);
 
 		bot.user.setPresence({
-			status: 'online', //online idle dnd invisible
+			status: 'dnd', // online idle dnd invisible
 			activity: {
 				name: `os segredos de ${bot.guilds.cache.size} servers!`,
 				url: 'https://www.twitch.tv/Lelozitos',
-				type: 'WATCHING', //WATCHING STREAMING PLAYING
+				type: 'STREAMING', // PLAYING STREAMING LISTENING WATCHING CUSTOM COMPETING
 			},
 		});
 	});
 };
+
+// https://discord.js.org/#/docs/discord.js/stable/class/Activity
