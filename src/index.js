@@ -9,7 +9,12 @@ const { readdirSync } = require('fs');
 // });
 
 const bot = new Client({
-	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+	],
 });
 bot.commands = new Collection();
 bot.buttons = new Collection();
