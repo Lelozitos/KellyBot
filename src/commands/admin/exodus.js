@@ -9,6 +9,7 @@ module.exports = {
 		.setName('exodus')
 		.setNameLocalizations({})
 		.setDescription('Change everyone to a voice channel')
+		.setDescriptionLocalizations({})
 		.setDefaultMemberPermissions(PermissionFlagsBits.MoveMembers)
 		.addChannelOption((option) =>
 			option
@@ -18,13 +19,13 @@ module.exports = {
 				.setRequired(true)
 		),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		const channel = interaction.options.getChannel('channel');
 
 		interaction.member.voice.channel.members.forEach((m) => {
 			m.voice.setChannel(channel);
 		});
 
-		interaction.reply(`Moved everyone to \`${channel.name}\``);
+		interaction.reply(`${lang['Moved everyone to']} \`${channel.name}\``);
 	},
 };

@@ -3,12 +3,9 @@ const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('say')
-		.setNameLocalizations({
-			de: 'sprechen',
-			'es-ES': 'falar',
-			'pt-BR': 'falar',
-		})
+		.setNameLocalizations({})
 		.setDescription('Send a custom message')
+		.setDescriptionLocalizations({})
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
 
 		.addStringOption((option) =>
@@ -18,7 +15,7 @@ module.exports = {
 				.setRequired(true)
 		),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		interaction.reply({ content: '.' });
 		await interaction.deleteReply();
 		interaction.channel.send(interaction.options.getString('string'));

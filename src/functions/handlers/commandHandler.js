@@ -13,6 +13,24 @@ module.exports = async (bot) => {
 			.forEach((commandFile) => {
 				const command = require(`../../commands/${categoryFolder}/${commandFile}`);
 				bot.commands.set(command.data.name, command);
+
+				// Probably not efficient since it has to
+				// load the same lang file several times
+
+				// Subcommands and options not translated
+				readdirSync('../lang')
+					.filter((f) => !f.includes('en'))
+					.forEach((langFile) => {
+						const lang = require(`../../../lang/${langFile}`);
+						const langName = lang.name;
+						const { name, description } = command.data;
+
+						command.data.name_localizations[langName] = lang[name];
+						command.data.description_localizations[langName] =
+							lang[description];
+					});
+
+				// console.log(command.data.name_localizations);
 				bot.commandArray.push(command.data.toJSON());
 				console.log(`Command ${command.data.name} is set!`);
 			});

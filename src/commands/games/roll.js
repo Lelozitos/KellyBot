@@ -3,17 +3,9 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('roll')
-		.setNameLocalizations({
-			de: 'rollen',
-			'es-ES': 'rolar',
-			'pt-BR': 'rolar',
-		})
+		.setNameLocalizations({})
 		.setDescription('Roll a dice')
-		.setDescriptionLocalizations({
-			de: 'Einen Würfel werfen',
-			'es-ES': 'Roda un dado',
-			'pt-BR': 'Roda um dado',
-		})
+		.setDescriptionLocalizations({})
 		.addStringOption((option) =>
 			option
 				.setName('command')
@@ -46,7 +38,7 @@ module.exports = {
 				})
 		),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		let args = interaction.options.getString('command').toLowerCase().trim();
 		let argsArray = args;
 		argsArray = argsArray.split('d').join('+').split('+');
@@ -55,7 +47,7 @@ module.exports = {
 		if (argsArray.length === 1) argsArray.unshift(1);
 		if (isNaN(argsArray[0])) argsArray[0] = 1;
 		if (argsArray[0] > 10_000_000 || argsArray[1] > 10_000_000)
-			return interaction.reply({ content: `Invalid number!` });
+			return interaction.reply({ content: lang['Invalid number'] });
 
 		let sum = argsArray[2];
 		let values = [];
@@ -93,7 +85,7 @@ module.exports = {
 		// await interaction.reply({ embeds: [embed] });
 
 		if (values.length > 100) values.length = 100;
-		let text = ` \`\`\`js\n# ${sum}\nDetails:[${args} (${values})]\`\`\` `;
+		let text = ` \`\`\`js\n# ${sum}\n${lang['Details']}:[${args} (${values})]\`\`\` `;
 
 		if (interaction.options.getBoolean('silent'))
 			return interaction.reply({ content: text, ephemeral: true });

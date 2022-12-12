@@ -8,9 +8,11 @@ const {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('rps')
-		.setDescription('Rock Paper Scissors'),
+		.setNameLocalizations({})
+		.setDescription('Rock Paper Scissors')
+		.setDescriptionLocalizations({}),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		const rock = new ButtonBuilder()
 			.setCustomId('rock')
 			.setEmoji('🗻')

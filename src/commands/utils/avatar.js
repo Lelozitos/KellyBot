@@ -3,12 +3,14 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('avatar')
+		.setNameLocalizations({})
 		.setDescription('Shows avatar of someone')
+		.setDescriptionLocalizations({})
 		.addUserOption((option) =>
 			option.setName('user').setDescription('User to fetch their avatar')
 		),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		let mention;
 		if (interaction.options.data != 0)
 			mention = interaction.options.getUser('user');

@@ -7,8 +7,10 @@ const {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('timeout')
+		.setNameLocalizations({})
 		.setDescription('Timeouts a user for a period of time')
-		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
+		.setDescriptionLocalizations({})
+		.setDefaultMemberPermissions(PermissionFlagsBits.MuteMembers)
 		.setDMPermission(false)
 		.addUserOption((option) =>
 			option
@@ -22,24 +24,23 @@ module.exports = {
 				.setDescription('Time in minutes the user remains timed out')
 		)
 		.addStringOption((option) =>
-			option.setName('reason').setDescription('Reason for the time out')
+			option.setName('reason').setDescription('Reason for the timeout')
 		),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		const mention = interaction.options.getUser('user');
 		const member = await interaction.guild.members.fetch(mention.id);
 
 		const time = interaction.options.getInteger('time') || 30;
 		const reason =
-			interaction.options.getString('reason') || 'No reason provided';
+			interaction.options.getString('reason') || lang['No reason provided'];
 
+		// Missing Permissions
 		member.timeout(time * 1000 * 60, reason);
 
 		if (!interaction.options.getBoolean('silent'))
-			return interaction.reply(`User ${mention.username} has been kicked!`);
-
-		interaction.reply(
-			`User ${mention.username} has been timed out for ${time} mintues!`
-		);
+			interaction.reply(
+				`${mention.username} ${lang['has been timed out for']} ${time} ${lang['minutes']}!`
+			);
 	},
 };

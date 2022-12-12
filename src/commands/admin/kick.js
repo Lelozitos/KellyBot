@@ -4,10 +4,13 @@ const {
 	EmbedBuilder,
 } = require('discord.js');
 
+// Needs to be tested
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('kick')
+		.setNameLocalizations({})
 		.setDescription('Kicks an user from the server')
+		.setDescriptionLocalizations({})
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
 		.setDMPermission(false)
 		.addUserOption((option) =>
@@ -25,20 +28,22 @@ module.exports = {
 				.setDescription('Do not send the user a notification about this')
 		),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		const mention = interaction.options.getUser('user');
 		const member = await interaction.guild.members.fetch(mention.id);
 
 		const reason =
-			interaction.options.getString('reason') || 'No reason provided';
+			interaction.options.getString('reason') || lang['No reason provided'];
 
 		member.kick(reason);
 
 		if (!interaction.options.getBoolean('silent'))
-			return interaction.reply(`User ${mention.username} has been kicked!`);
+			return interaction.reply(
+				`${mention.username} ${lang['has been kicked']}`
+			);
 
 		const embed = new EmbedBuilder()
-			.setTitle(`❌ You've been kicked`)
+			.setTitle(`❌ ${lang["You've been kicked"]}`)
 			.setDescription(`Reason:\n${reason}`)
 			.setThumbnail(interaction.guild.iconURL({ size: 4096, dynamic: true }))
 			.setFooter({
@@ -49,8 +54,8 @@ module.exports = {
 
 		await user
 			.send({ embeds: [embed] })
-			.catch(interaction.reply(`User's DM's are off`));
+			.catch(interaction.reply(lang["User's DM's are off"]));
 
-		interaction.reply(`User ${mention.username} has been kicked!`);
+		interaction.reply(`${mention.username} ${lang['has been kicked']}`);
 	},
 };

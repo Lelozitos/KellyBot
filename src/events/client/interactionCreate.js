@@ -3,6 +3,13 @@ module.exports = {
 	once: false,
 
 	async run(interaction, bot) {
+		if (interaction.locale == 'en-GB' || interaction.locale == 'en-US')
+			interaction.lang = 'en';
+		else interaction.lang = interaction.locale;
+
+		const lang = require(`../../../lang/${interaction.lang}.js`);
+		interaction.lang = lang;
+
 		if (interaction.isChatInputCommand()) {
 			const { commands } = bot;
 			const { commandName } = interaction;
@@ -10,7 +17,7 @@ module.exports = {
 			if (!command) return;
 
 			try {
-				await command.run(interaction, bot);
+				await command.run(interaction, bot, lang);
 			} catch (err) {
 				console.log(err);
 				await interaction.reply({

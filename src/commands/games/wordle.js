@@ -11,9 +11,11 @@ const { createCanvas } = require('canvas');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('wordle')
-		.setDescription('Start a wordle game'),
+		.setNameLocalizations({})
+		.setDescription('Start a Wordle game')
+		.setDescriptionLocalizations({}),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		const tries = [];
 		const side = 480;
 
@@ -30,13 +32,15 @@ module.exports = {
 			name: 'wordle.png',
 		});
 
-		const guesses = require(`../../../words/wordle/guesses`);
-		const words = require(`../../../words/wordle/words`);
+		const guesses = require(`../../../words/wordle/${lang.name}_guesses`);
+		const words = require(`../../../words/wordle/${lang.name}_words`);
 		const word = words[Math.floor(Math.random() * words.length)];
 
 		const embed = new EmbedBuilder()
 			.setColor('#00ECC1')
-			.setTitle('**🧾 Wordle**')
+			.setTitle(
+				`**🧾 ${lang.wordle.replace(/^./, (str) => str.toUpperCase())}**`
+			)
 			.setImage('attachment://wordle.png')
 			.setFooter({
 				iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
@@ -82,19 +86,21 @@ module.exports = {
 			});
 
 			embed.setDescription(
-				'**Used Words**\n```' + tries.join(' / ').toUpperCase() + '```'
+				`**${lang['Used words']}**\n \`\`\`${tries
+					.join(' / ')
+					.toUpperCase()} \`\`\``
 			);
 			interaction.editReply({ embeds: [embed], files: [image] });
 
 			if (msg.content === word) {
 				collector.stop();
-				return interaction.followUp({ content: "You've won!" });
+				return interaction.followUp({ content: `${lang["You've won"]}` });
 			}
 
 			if (tries.length == 6) {
 				collector.stop();
 				return interaction.followUp({
-					content: `You've lost! The correct word was \`${word}\``,
+					content: `${lang["You've lost"]} ${lang['The correct word was']} \`${word}\``,
 				});
 			}
 		});

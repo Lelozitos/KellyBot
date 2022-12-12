@@ -7,17 +7,9 @@ const {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('secretsanta')
-		.setNameLocalizations({
-			de: 'wichteln',
-			'es-ES': 'amigoinvisible',
-			'pt-BR': 'amigosecreto',
-		})
-		.setDescription('Roll a Secret Santa with your friends!')
-		.setDescriptionLocalizations({
-			de: 'Richten Sie einen geheimen Freund unter Ihren Freunden ein!',
-			'es-ES': '¡Configura un amigo secreto entre tus amigos! ',
-			'pt-BR': 'Configura um amigo secreto entre seus amigos!',
-		})
+		.setNameLocalizations({})
+		.setDescription('Roll a Secret Santa with your friends')
+		.setDescriptionLocalizations({})
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
 		.addRoleOption((option) =>
 			option
@@ -58,18 +50,20 @@ module.exports = {
 		members = Array.from(members.values());
 
 		if (members.length < 3)
-			return interaction.reply('Not enough members in that role!');
+			return interaction.reply(lang['Not enough members in that role']);
 
 		for (let i = 0; i < members.length - 2; i++) {
 			members[i].send(
-				`Your secret Santa is ${members[i + 1]}! Gift them well!`
+				`${lang['Your secret Santa is']} ${members[i + 1]}! ${
+					lang['Gift them well']
+				}!`
 			);
 		}
 
 		members[members.length - 1].send(
-			`Your secret Santa is ${members[0]}! Gift them well!\nby: ${interaction.user}`
+			`${lang['Your secret Santa is']} ${members[0]}! ${lang['Gift them well']}!`
 		);
 
-		interaction.reply("Everyone has been DM'ed. Go check it!");
+		interaction.reply(lang["Everyone has been DM'ed. Go check it"]);
 	},
 };

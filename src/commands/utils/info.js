@@ -3,7 +3,9 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('info')
+		.setNameLocalizations({})
 		.setDescription('Gives information about something')
+		.setDescriptionLocalizations({})
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('user')
@@ -18,7 +20,8 @@ module.exports = {
 				.setDescription('Gives information about this Server')
 		),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
+		const { locale } = interaction;
 		if (interaction.options.getSubcommand() === 'user') {
 			let mention;
 			if (interaction.options.data[0].options.length != 0)
@@ -28,13 +31,13 @@ module.exports = {
 			// .setColor(mention.accentColor);     only by fetching the user
 
 			const embed = new EmbedBuilder()
-				.setTitle(`🙍‍♂️ • User Info`)
+				.setTitle(`🙍‍♂️ • ${lang['User Info']}`)
 				.setDescription(
-					`${mention}\n\n🔮 **User Tag** • ${mention.tag}\n🔮 **User Id** • ${
-						mention.id
-					}\n🔮 **Account Created at** • ${mention.createdAt.toLocaleDateString(
-						'en-GB'
-					)}`
+					`${mention}\n\n🔮 **${lang['User Tag']}** • ${mention.tag}\n🔮 **${
+						lang['User Id']
+					}** • ${mention.id}\n🔮 **${
+						lang['Account Created at']
+					}** • ${mention.createdAt.toLocaleDateString(locale)}`
 				)
 				.setThumbnail(mention.displayAvatarURL({ size: 4096, dynamic: true }))
 				.setFooter({
@@ -50,17 +53,17 @@ module.exports = {
 
 			// https://discord-api-types.dev/api/discord-api-types-v10/enum/ChannelType
 			const embed = new EmbedBuilder()
-				.setTitle(`👩‍💻 • Server Info`)
+				.setTitle(`👩‍💻 • ${lang['Server Info']}`)
 				.setDescription(
-					`${owner}\n\n🔮 **Name** • ${guild.name}\n🔮 **Members** • ${
-						guild.memberCount
-					}\n🔮 **Voice / Text Channels** • ${
-						guild.channels.cache.filter((c) => c.type == 2).size
-					} / ${
+					`${owner}\n\n🔮 **${lang['Guild Name']}** • ${guild.name}\n🔮 **${
+						lang['Members']
+					}** • ${guild.memberCount}\n🔮 **${
+						lang['Voice / Text Channels']
+					}** • ${guild.channels.cache.filter((c) => c.type == 2).size} / ${
 						guild.channels.cache.filter((c) => c.type == 0).size
-					}\n🔮 **Server Created at** • ${guild.createdAt.toLocaleDateString(
-						'en-GB'
-					)}`
+					}\n🔮 **${
+						lang['Server Created at']
+					}** • ${guild.createdAt.toLocaleDateString(locale)}`
 				)
 				.setThumbnail(interaction.guild.iconURL({ size: 4096, dynamic: true }))
 				.setFooter({

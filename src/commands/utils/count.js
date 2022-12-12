@@ -3,7 +3,9 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('count')
-		.setDescription('Count the size of the string!')
+		.setNameLocalizations({})
+		.setDescription('Count the size of the string')
+		.setDescriptionLocalizations({})
 		.addStringOption((option) =>
 			option
 				.setName('string')
@@ -11,7 +13,7 @@ module.exports = {
 				.setRequired(true)
 		),
 
-	async run(interaction, bot) {
+	async run(interaction, bot, lang) {
 		interaction.reply({
 			content: `${interaction.options.getString('string').length}`,
 		});
