@@ -15,15 +15,15 @@ module.exports = {
 
 	async run(interaction, bot, lang) {
 		const rock = new ButtonBuilder()
-			.setCustomId('rock')
+			.setCustomId('rps_rock')
 			.setEmoji('🗻')
 			.setStyle(ButtonStyle.Secondary);
 		const paper = new ButtonBuilder()
-			.setCustomId('paper')
+			.setCustomId('rps_paper')
 			.setEmoji('📃')
 			.setStyle(ButtonStyle.Secondary);
 		const scissors = new ButtonBuilder()
-			.setCustomId('scissors')
+			.setCustomId('rps_scissors')
 			.setEmoji('✂')
 			.setStyle(ButtonStyle.Secondary);
 
