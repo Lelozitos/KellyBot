@@ -3,6 +3,7 @@ const {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
+	EmbedBuilder,
 } = require('discord.js');
 
 module.exports = {
@@ -26,25 +27,46 @@ module.exports = {
 			.setEmoji('✂')
 			.setStyle(ButtonStyle.Secondary);
 
+		const embed = new EmbedBuilder()
+			.setTitle(lang['Rock Paper Scissors'])
+			.setColor('#7B7D7D')
+			.setFooter({
+				iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
+				text: interaction.user.username,
+			});
+
 		await interaction.reply({
+			embeds: [embed],
 			components: [new ActionRowBuilder().addComponents(rock, paper, scissors)],
 		});
 	},
 
-	async rps(interaction, bot, rps) {
-		const options = ['rock', 'paper', 'scissors'];
+	async rps(interaction, bot, lang, rps) {
+		const options = ['🗻', '📃', 'scissors'];
 		const botChoice = options[Math.floor(Math.random() * options.length)];
 
+		const embed = new EmbedBuilder()
+			.setTitle(`${rps} ${lang['Rock Paper Scissors']}`)
+			.setFooter({
+				iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
+				text: interaction.user.username,
+			});
+
 		if (
-			(rps === 'rock' && botChoice === 'scissors') ||
-			(rps === 'paper' && botChoice === 'rock') ||
-			(rps === 'scissors' && botChoice === 'paper')
+			(rps === '🗻' && botChoice === '✂') ||
+			(rps === '📃' && botChoice === '🗻') ||
+			(rps === '✂' && botChoice === '📃')
 		) {
-			interaction.reply('Won!');
+			embed.setDescription(lang["You've won"]);
+			embed.setColor('#00FF00');
 		} else if (rps === botChoice) {
-			interaction.reply('Draw!');
+			embed.setDescription(lang['Draw']);
+			embed.setColor('#FFFF00');
 		} else {
-			interaction.reply('Loss!');
+			embed.setDescription(lang["You've lost"]);
+			embed.setColor('#FF0000');
 		}
+
+		interaction.update({ embeds: [embed] });
 	},
 };
