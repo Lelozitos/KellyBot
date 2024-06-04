@@ -1,4 +1,5 @@
 <h1 align="center">🧸 Kelly Bot 3.0 🧸</h1>
+<h2 align="center">Deprecated</h2>
 
 # TODO
 
@@ -10,6 +11,7 @@ IMPROVEMENTS
 
     • RPS (UI and Buttons with translation)
     • Cooldown system
+    • Buttons not requiring a whole new file
 
 COMMANDS
 

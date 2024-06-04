@@ -45,6 +45,11 @@ module.exports = {
 	Draw: '',
 	"You've lost": '',
 
+	ttt: '',
+	'Tic Tac Toe': '',
+	'your turn': '',
+	'the AI': '',
+
 	wordle: '',
 	'Start a Wordle game': '',
 	'Unknown word': '',

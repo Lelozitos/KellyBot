@@ -47,6 +47,11 @@ module.exports = {
 	Draw: 'Empate',
 	"You've lost": 'Você perdeu',
 
+	ttt: 'velha',
+	'Tic Tac Toe': 'Jogo da Velha',
+	'your turn': 'sua vez',
+	'the AI': 'a IA',
+
 	wordle: 'termo',
 	'Start a Wordle game': 'Começa uma partida de Termo',
 	'Unknown word': 'Palavra desconhecida',
