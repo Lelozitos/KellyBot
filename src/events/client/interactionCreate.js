@@ -32,7 +32,7 @@ module.exports = {
 			if (!button) return;
 
 			try {
-				await button.run(interaction, bot);
+				await button.run(interaction, bot, lang);
 			} catch (err) {
 				console.log(err);
 			}
@@ -43,7 +43,7 @@ module.exports = {
 			if (!menu) return;
 
 			try {
-				await menu.run(interaction, bot);
+				await menu.run(interaction, bot, lang);
 			} catch (err) {
 				console.log(err);
 			}
